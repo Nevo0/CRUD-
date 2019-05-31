@@ -13,9 +13,7 @@ const customStyles = {
   }
 };
 
-const validate = (values, postList) => {
-  console.log(values);
-
+const validate = values => {
   const errors = {};
   if (!values.post_title) {
     errors.post_title = "Tytuł jest pusta";
@@ -145,30 +143,24 @@ let PostForm = props => {
           </div>
         </div>
         <div className="d-flex justify-content-around">
-          <input
-            type="submit"
-            value="zapisz"
-            disabled={pristine || submitting}
-          />
-          <button type="submit" disabled={pristine || submitting}>
-            Submit
-          </button>
           <button
+            className="btn btn-success btn-sm mx-1 "
+            type="submit"
+            disabled={pristine || submitting}
+          >
+            Dodaj
+          </button>
+
+          <button
+            className="btn btn-outline-secondary btn-sm mx-1"
             type="button"
             disabled={pristine || submitting}
             onClick={reset}
           >
             Clear Values
           </button>
-          <button onClick={onCloseModal}>zamknij</button>
-          <button className="btn btn-primary btn-sm mx-1 " type="submit">
-            Dodaj
-          </button>
 
-          <button
-            className="btn btn-secondary btn-sm mx-1"
-            onClick={onCloseModal}
-          >
+          <button className="btn btn-dark btn-sm mx-1" onClick={onCloseModal}>
             Zamknij
           </button>
         </div>

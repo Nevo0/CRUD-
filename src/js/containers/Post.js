@@ -71,8 +71,8 @@ class Post extends Component {
 
   render() {
     return (
-      <div className="Post">
-        <button className="btn btn-primary" onClick={this.openModal}>
+      <div className="post">
+        <button className="btn btn-primary ml-4" onClick={this.openModal}>
           Dodaj post
         </button>
 
@@ -81,7 +81,6 @@ class Post extends Component {
           isOpenModal={this.state.isOpenModal}
           onCloseModal={this.closeModal.bind(this)}
           initialValues={{}}
-          postList={this.props.post}
         />
 
         <PostList
