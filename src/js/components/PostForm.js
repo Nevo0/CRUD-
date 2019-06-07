@@ -150,11 +150,15 @@ let PostForm = props => {
         </div>
         <div className="d-flex justify-content-around">
           <button
-            className="btn btn-success btn-sm mx-1 "
+            className={
+              isOpenAddEditModal
+                ? "btn btn-success btn-sm mx-1"
+                : "btn btn-primary btn-sm mx-1"
+            }
             type="submit"
             disabled={pristine || submitting}
           >
-            Dodaj
+            {isOpenAddEditModal ? "Zapisz zmiany" : "Dodaj"}
           </button>
 
           <button
@@ -163,7 +167,7 @@ let PostForm = props => {
             disabled={pristine || submitting}
             onClick={reset}
           >
-            Clear Values
+            Wyczyść
           </button>
 
           <button className="btn btn-dark btn-sm mx-1" onClick={onCloseModal}>

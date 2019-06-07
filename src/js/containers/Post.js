@@ -11,17 +11,6 @@ import {
   deletePost
 } from "../reducers/postsActions";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-20%",
-    transform: "translate(-50%, -50%)"
-  }
-};
-
 class Post extends Component {
   state = {
     loading: true,

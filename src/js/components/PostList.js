@@ -57,7 +57,7 @@ export default class PostDetails extends Component {
                       </div>
                       <div className="mx-3 my-3">
                         <button
-                          className="btn btn-primary btn-sm"
+                          className="btn btn-success btn-sm"
                           onClick={() => this.openAddEditModal(post)}
                         >
                           Edytuj
