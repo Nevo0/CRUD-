@@ -8,6 +8,8 @@ export default class PostDetails extends Component {
   };
 
   openAddEditModal(post) {
+    // console.log(post);
+
     this.setState({
       isOpenAddEditModal: true,
       init: post
@@ -44,7 +46,7 @@ export default class PostDetails extends Component {
                         <div className="card-title">
                           <h5>
                             <span className=" bg-info text-white ">
-                              {post.id}
+                              {/* {post.id} */}
                             </span>
                             {post.post_title}
                           </h5>
@@ -77,12 +79,14 @@ export default class PostDetails extends Component {
               })}
           </div>
         </div>
-        <PostForm
-          isOpenModal={this.state.isOpenAddEditModal}
-          onCloseModal={this.closeAddEditModal.bind(this)}
-          onSubmit={this.submitAddEditModal.bind(this)}
-          initialValues={this.state.init}
-        />
+        {this.state.isOpenAddEditModal ? (
+          <PostForm
+            isOpenAddEditModal={this.state.isOpenAddEditModal}
+            onCloseModal={this.closeAddEditModal.bind(this)}
+            onSubmit={this.submitAddEditModal.bind(this)}
+            initialValues={this.state.init}
+          />
+        ) : null}
       </div>
     );
   }

@@ -56,11 +56,15 @@ const renderField = ({ input, type, meta: { touched, error, warning } }) => (
   </div>
 );
 
+const renderError = ({ meta: { touched, error } }) =>
+  touched && error ? <span className={"red"}>{error}</span> : false;
+
 Modal.setAppElement("#root");
 
 let PostForm = props => {
   const {
     isOpenModal,
+    isOpenAddEditModal,
     onCloseModal,
     handleSubmit,
     initialValues,
@@ -69,11 +73,11 @@ let PostForm = props => {
     reset,
     submitting
   } = props;
-  // console.log(props.initialValues);
+  console.log(initialValues);
 
   return (
     <Modal
-      isOpen={isOpenModal}
+      isOpen={isOpenAddEditModal || isOpenModal}
       onRequestClose={onCloseModal}
       contentLabel="Dodaj Post"
       style={customStyles}
@@ -127,6 +131,8 @@ let PostForm = props => {
             />
             Publiczny
           </label>
+          <Field name="post_status" component={renderError} />
+          <label />
         </div>
 
         <div className="input-group input-group-sm mb-3">

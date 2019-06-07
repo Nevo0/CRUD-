@@ -30,14 +30,16 @@ class Post extends Component {
   componentDidMount() {
     this.props.postList();
   }
+  componentDidUpdate() {
+    this.props.postList();
+  }
 
   submit = data => {
     const date = new Date();
     let post_date =
       date.getDate() +
       "." +
-      date.getMonth() +
-      1 +
+      (date.getMonth() + 1) +
       "." +
       date.getFullYear() +
       " " +
@@ -62,6 +64,8 @@ class Post extends Component {
   };
 
   openModal = () => {
+    console.log("czemu");
+
     this.setState({ isOpenModal: true });
   };
 
@@ -76,12 +80,14 @@ class Post extends Component {
           Dodaj post
         </button>
 
-        <PostForm
-          onSubmit={this.submit}
-          isOpenModal={this.state.isOpenModal}
-          onCloseModal={this.closeModal.bind(this)}
-          initialValues={{}}
-        />
+        {this.state.isOpenModal ? (
+          <PostForm
+            onSubmit={this.submit}
+            isOpenModal={this.state.isOpenModal}
+            onCloseModal={this.closeModal.bind(this)}
+            initialValues={{}}
+          />
+        ) : null}
 
         <PostList
           postList={this.props.post}
